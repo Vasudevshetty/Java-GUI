@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EventHandlingDemo extends Frame
-implements ActionListener
+        // implements ActionListener 
 {
     TextField text;
     Button button;
@@ -14,12 +14,14 @@ implements ActionListener
 
     public EventHandlingDemo() {
         super("Even handling demo");
-        text = new TextField("0", 20);
+        text = new TextField(20);
         button = new Button("Click");
 
         // this is the first method.
-        button.addActionListener(this);
+        // button.addActionListener(this);
 
+        // this is the second method using a inner class.
+        button.addActionListener(new MyListener());
 
         this.setLayout(new FlowLayout());
         this.add(text);
@@ -27,10 +29,13 @@ implements ActionListener
         this.setSize(400, 300);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-    count++;
-    text.setText(String.valueOf(count));
+    class MyListener implements ActionListener{   
+        // the second method using a inner class.
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            count++;
+            text.setText(String.valueOf(count));
+        }
     }
 
     public static void main(String[] args) {
