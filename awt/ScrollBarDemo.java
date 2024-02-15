@@ -33,6 +33,11 @@ public class ScrollBarDemo extends Frame implements AdjustmentListener {
         this.add(red);
         this.add(green);
         this.add(blue);
+        this.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                System.exit(0);
+            }
+        });
     }
 
     @Override
