@@ -3,7 +3,8 @@ import java.awt.TextField;
 import java.awt.Button;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class EventHandlingDemo extends Frame
 // implements ActionListener
@@ -24,11 +25,24 @@ public class EventHandlingDemo extends Frame
         // button.addActionListener(new MyListener());
 
         // the third method is.
-        button.addActionListener(new ActionListener() {
+        // button.addActionListener(new ActionListener() {
+        //     @Override
+        //     public void actionPerformed(ActionEvent e){
+        //         count++;
+        //         text.setText(String.valueOf(count));
+        //     }
+        // });
+
+        // and the final method -> lambda expression.
+        button.addActionListener((ActionEvent e)->{
+            count++;
+            text.setText(String.valueOf(count));
+        });
+
+        this.addWindowListener(new WindowAdapter() {
             @Override
-            public void actionPerformed(ActionEvent e){
-                count++;
-                text.setText(String.valueOf(count));
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
             }
         });
 
