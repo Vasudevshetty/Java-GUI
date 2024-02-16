@@ -9,7 +9,7 @@ Welcome to my Java GUI learning journey! This repository contains my progress in
    A simple calculator built using Java AWT. Supports basic binary operations and limited digit input. The project uses a custom NotationConvertor utility for expression evaluation.
 
    - **Calculator Code:📱** [Calculator.java](https://github.com/Vasudevshetty/Java-GUI/blob/main/Projects/src/project/Calculator.java)
-   - **Utility Class:🗑️** [NotationConvertor.java](https://github.com/Vasudevshetty/Java-GUI/tree/main/Projects/src/project)
+   - **Utility Class:🗑️** [NotationConvertor.java](https://github.com/Vasudevshetty/Java-GUI/blob/main/Projects%2Fsrc%2Fotherpackages%2FNotationConvertor.java)
 
      How to run 🧑‍💻 
 
