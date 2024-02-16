@@ -3,33 +3,48 @@ import java.awt.Frame;
 import java.awt.Graphics;
 
 public class Animation extends Frame implements Runnable {
-    int x, y, tx, ty; // translation.
+    int x1, y1, tx1, ty1; // translation.
+    int x2, y2, tx2, ty2; // translation.
 
     public Animation() {
         this.setSize(550, 450);
-        x = y = 100;
-        tx = ty = 1;
-        Thread t = new Thread(this);
-        t.start();
+        x1 = y1 = 100;
+        tx1 = ty1 = 1;
+        x2 = y2 = 200;
+        tx2 = ty2 = -1;
+        Thread t1 = new Thread(this);
+        t1.start();
     }
 
     public void paint(Graphics g) {
         g.setColor(Color.blue);
-        g.fillOval(x, y, 50, 50);
+        g.fillOval(x1, y1, 50, 50);
+        g.setColor(Color.red);
+        g.fillOval(x2, y2, 50, 50);
     }
 
     public void run() {
         while (true) {
+            synchronized (this) {
 
-            x += tx;
-            y += ty;
+                x1 += tx1;
+                y1 += ty1;
 
-            tx *= x < 0 || x > 500 ? -1 : 1;
-            ty *= y < 0 || y > 400 ? -1 : 1;
-            repaint();
+                tx1 *= x1 < 0 || x1 > 500 ? -1 : 1;
+                ty1 *= y1 < 0 || y1 > 400 ? -1 : 1;
+
+                x2 += tx2;
+                y2 += ty2;
+
+                tx2 *= x2 < 0 || x2 > 500 ? -1 : 1;
+                ty2 *= y2 < 0 || y2 > 400 ? -1 : 1;
+
+                repaint();
+            }
             try {
                 Thread.sleep(5);
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
